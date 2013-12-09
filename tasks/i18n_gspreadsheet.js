@@ -97,6 +97,9 @@ module.exports = function(grunt) {
                 translations[locale][translation_key] = row[locale];
               }
             } else if ( row[locale] ) {
+              if (row[locale].indexOf('�') !== -1) {
+                grunt.log.error( locale + ' -- ' + translation_key + ' has some �� action' );
+              }              
               translations[locale][translation_key] = row[locale];
             }
           });
